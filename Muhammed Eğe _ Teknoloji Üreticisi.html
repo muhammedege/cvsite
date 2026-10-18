@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#FAF7F0">
+<meta name="description" content="Yapay zekâ, yazılım, oyun geliştirme ve erişilebilir teknoloji üzerine projeler ve geliştirme günlüğü.">
+<title>Muhammed Eğe | Teknoloji Üreticisi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#101820;--surface:#1F3A32;--ink:#FAF7F0;--muted:#cfc6b2;--line:#335247;
+  --cyan:#C6A15B;--blue:#E8DCC5;--on-cyan:#101820;
+  --head:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  color-scheme:dark;box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+:root[data-theme="light"]{
+  --bg:#FAF7F0;--surface:#ffffff;--ink:#101820;--muted:#4e5a57;--line:#E8DCC5;
+  --cyan:#1F3A32;--blue:#8c6a26;--on-cyan:#FAF7F0;color-scheme:light}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 84px)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:11;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 var(--body);-webkit-text-size-adjust:100%}
+a{color:var(--cyan)}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--cyan);color:var(--on-cyan);padding:8px 14px;border-radius:6px;z-index:20}
+.skip:focus{left:8px}
+#bar{position:fixed;left:0;top:env(safe-area-inset-top,0px);height:3px;width:0;background:var(--cyan);z-index:30}
+header.site{border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;min-height:68px;flex-wrap:wrap}
+.brand{font:700 1.15rem var(--head);color:var(--ink);text-decoration:none}
+nav{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+nav a{color:var(--muted);text-decoration:none;font-weight:500;font-size:.95rem;padding:6px 0;border-bottom:2px solid transparent}
+nav a:hover,nav a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--cyan)}
+.theme{background:none;border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:6px 12px;font:500 .85rem var(--body);cursor:pointer;min-height:36px}
+h1,h2,h3{font-family:var(--head);line-height:1.2;margin:0}
+h1{font-size:clamp(2rem,5vw,3.1rem);letter-spacing:-.01em;font-weight:600}
+h2{font-size:1.7rem;margin-bottom:12px}
+h3{font-size:1.2rem}
+.hero{position:relative;isolation:isolate;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center;padding:72px 0 56px}
+.hero p{color:var(--muted);font-size:1.12rem;max-width:56ch;margin:18px 0 28px}
+.hero svg{width:100%;height:auto;max-height:320px}
+.hero p.who{margin:0 0 14px;font:600 1rem var(--body);color:var(--cyan)}
+.btn{display:inline-block;background:var(--cyan);color:var(--on-cyan);padding:11px 22px;border-radius:6px;text-decoration:none;font-weight:600;margin:0 10px 10px 0}
+.btn.alt{background:none;color:var(--ink);border:1px solid var(--line)}
+.btn:not(.alt){background:linear-gradient(120deg,var(--cyan),var(--blue));box-shadow:0 8px 20px rgba(31,58,50,.28)}
+section.blk{padding:44px 0;border-top:1px solid var(--line)}
+.lead{color:var(--muted);max-width:62ch;margin:0 0 24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;list-style:none;padding:0;margin:0}
+.card{display:flex;flex-direction:column;gap:10px;height:100%;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:22px;color:var(--ink);text-decoration:none}
+.card:hover{border-color:var(--cyan)}
+.card p{margin:0;color:var(--muted);font-size:.96rem;flex:1}
+.cover{height:84px;border-radius:6px;border:1px solid var(--line);background:var(--bg)}
+.pill{display:inline-block;font-size:.8rem;font-weight:600;border-radius:999px;padding:2px 10px;border:1px solid var(--blue);color:var(--blue);width:fit-content}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{background:var(--bg);border:1px solid var(--line);color:var(--muted);border-radius:4px;padding:1px 8px;font-size:.8rem}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px}
+.filters button{background:var(--surface);border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:6px 14px;font:500 .9rem var(--body);cursor:pointer;min-height:36px}
+.filters button[aria-pressed="true"]{background:var(--cyan);color:var(--on-cyan);border-color:var(--cyan)}
+input[type=search]{width:100%;max-width:420px;font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin-bottom:16px}
+.meta{color:var(--muted);font-size:.88rem}
+.page{padding:48px 0 64px}
+.article{max-width:680px}
+.article h2{margin:36px 0 10px;font-size:1.4rem}
+.article p{margin:0 0 18px}
+.toc{border:1px solid var(--line);border-radius:8px;padding:14px 20px;margin:20px 0;max-width:680px}
+.toc ul{margin:6px 0 0;padding-left:18px}
+.draft{border-left:3px solid var(--blue);padding:8px 14px;color:var(--muted);margin:16px 0;max-width:680px;background:var(--surface)}
+.facts{display:grid;gap:22px;max-width:680px}
+.facts h2{font-size:1.2rem;margin-bottom:4px}
+.facts p,.facts ul{margin:0}
+.pn{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:40px;padding-top:20px;border-top:1px solid var(--line);max-width:680px}
+.list{list-style:none;margin:0;padding:0;display:grid;gap:12px;max-width:680px}
+.list li{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:12px 16px}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.rv{opacity:0;transform:translateY(36px) scale(.98);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+#main{overflow-x:clip}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;filter:blur(70px);opacity:.4;z-index:-1;animation:float 9s ease-in-out infinite alternate}
+.hero::before{width:320px;height:320px;background:#C6A15B;top:10px;left:-80px}
+.hero::after{width:280px;height:280px;background:#3d7a66;right:-40px;bottom:-20px;animation-delay:-4s}
+@keyframes float{to{transform:translate(50px,-36px) scale(1.25)}}
+.hero>div>*{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.hero>div>*:nth-child(2){animation-delay:.15s}.hero>div>*:nth-child(3){animation-delay:.3s}.hero>div>*:nth-child(4){animation-delay:.45s}.hero>div>*:nth-child(n+5){animation-delay:.6s}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+.hero h1{color:var(--ink)}
+.hero h1.split{animation:none}
+.w{display:inline-block;animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+#net{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+.card{position:relative;overflow:hidden;will-change:transform}
+.card::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(240px circle at var(--mx,50%) var(--my,50%),rgba(198,161,91,.24),transparent 70%)}
+.card:hover::after{opacity:1}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}
+.stat{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:18px}
+.stat strong{display:block;font:700 2.3rem/1.1 var(--head);color:var(--cyan)}
+.stat span{color:var(--muted);font-size:.9rem}
+header.site{transition:box-shadow .3s}
+header.site.sc{box-shadow:0 8px 24px rgba(16,24,32,.14)}
+.enter{animation:fade .5s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.card{box-shadow:0 2px 12px rgba(16,24,32,.07);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,.18)}
+.btn{transition:transform .2s ease,filter .2s ease}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.flow{stroke-dasharray:6 8;animation:flow 6s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-140}}
+.nodes circle{animation:pulse 2.8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.nodes circle:nth-child(2){animation-delay:.5s}.nodes circle:nth-child(3){animation-delay:1s}.nodes circle:nth-child(4){animation-delay:1.5s}.nodes circle:nth-child(5){animation-delay:2s}
+@keyframes pulse{50%{transform:scale(1.3)}}
+.hero p.rot{margin:-10px 0 26px;font-size:.98rem}
+#rot{color:var(--cyan);font-weight:600;transition:opacity .3s}
+#top{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:1.2rem;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s;z-index:15}
+#top.show{opacity:1;pointer-events:auto}
+h1,h2,h3{text-wrap:balance;overflow-wrap:anywhere}
+p,li{text-wrap:pretty;overflow-wrap:break-word}
+.wrap{padding-left:max(24px,env(safe-area-inset-left));padding-right:max(24px,env(safe-area-inset-right))}
+nav a{padding:10px 2px}
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:36px;align-items:start}
+.contact h2{font-size:1.3rem}
+.contact .list{max-width:none}
+.list li{overflow-wrap:anywhere}
+.msg{display:grid;gap:14px}
+.msg label{display:grid;gap:4px;font-weight:600;font-size:.92rem}
+.msg input,.msg textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:11px 12px;width:100%}
+.msg textarea{min-height:130px;resize:vertical}
+@media (hover:none){.card:hover,.btn:hover{transform:none}.card:hover::after{opacity:0}}
+@media (min-width:1400px){.wrap{max-width:1120px}}
+@media (max-width:900px){.hero{gap:24px;padding:56px 0 40px}.hero svg{max-height:240px}}
+@media (max-width:760px){
+  body{font-size:16px}
+  .wrap{padding-left:max(18px,env(safe-area-inset-left));padding-right:max(18px,env(safe-area-inset-right))}
+  html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 110px)}
+  header.site .wrap{min-height:0;padding-top:10px;padding-bottom:4px}
+  nav{width:100%;overflow-x:auto;flex-wrap:nowrap;gap:20px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  nav::-webkit-scrollbar{display:none}
+  nav a{white-space:nowrap}
+  .hero{grid-template-columns:1fr;padding:36px 0 32px}
+  .hero svg{max-height:170px}
+  .btn{display:block;text-align:center;margin-right:0}
+  section.blk{padding:32px 0}
+  .page{padding:32px 0 48px}
+  .grid{grid-template-columns:1fr}
+  h2{font-size:1.45rem}
+  .filters button,.theme{min-height:44px}
+  .pn{flex-direction:column}
+}
+@media (prefers-reduced-motion:reduce){.w,.flow,.nodes circle,.hero::before,.hero::after,.hero>div>*{animation:none!important}.rv{transform:none}.card:hover,.btn:hover{transform:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">İçeriğe geç</a>
+<div id="bar" aria-hidden="true"></div>
+<button id="top" type="button" aria-label="Sayfanın başına dön">↑</button>
+<noscript><p class="wrap">Bu sitenin çalışması için JavaScript gerekir.</p></noscript>
+<header class="site"><div class="wrap">
+  <a class="brand" href="#/" id="brand">Ad Soyad</a>
+  <nav aria-label="Ana menü" id="nav"></nav>
+</div></header>
+<main id="main" tabindex="-1"><div class="wrap" id="view"></div></main>
+<footer><div class="wrap"><span id="foot"></span><button class="theme" id="theme" type="button">Tema</button></div></footer>
+
+<script>
+(function(){
+"use strict";
+/* ===== İÇERİK: yalnızca bu bölümü düzenleyin ===== */
+var CONFIG={
+  name:"Muhammed Eğe",
+  tagline:"Fikirleri araştırıyorum. Sistemler kuruyorum. Teknoloji üretiyorum.",
+  intro:"Yapay zekâ, yazılım, oyun geliştirme ve erişilebilir teknoloji alanlarında öğreniyor, prototipler geliştiriyor ve üretim sürecimi açıkça belgeliyorum.",
+  email:"muhammedege.3304@gmail.com",
+  social:[                     // url boşsa gösterilmez
+    {label:"Instagram",url:"https://www.instagram.com/muhammed.ege.33/"},
+    {label:"GitHub",url:"https://github.com/muhammedege"},
+    {label:"LinkedIn",url:""},
+    {label:"YouTube",url:""}
+  ]
+};
+var TOPICS=["Yapay zekâ ve LLM","Python","Web teknolojileri","Unreal Engine 5","Unity","Blender","Arduino ve elektronik","Erişilebilir teknoloji","Girişimcilik"];
+var ABOUT=[
+ "Teknolojiye yalnızca kullanıcı olarak bakmıyorum; sorunları anlamaya, prototip geliştirmeye ve fikirleri kullanılabilir ürünlere dönüştürmeye çalışıyorum. Mesleki eğitim kapsamında bilişim ve yazılım alanında öğrenim görüyorum.",
+ "Hazır çözümleri alıp geçmek yerine sistemin nasıl çalıştığını anlamak istiyorum. Bu yüzden hataları, başarısız denemeleri ve aldığım tasarım kararlarını belgeliyorum. Bu site, zamanla büyüyecek teknoloji arşivim.",
+ "Uzun vadeli hedefim, yapay zekâ ve ileri teknoloji alanında gerçek ürünler geliştiren bir şirket kurmak. Bu yolun başındayım; ilerlememi iddialarla değil, projelerim ve geliştirme günlüğüm üzerinden anlatmayı tercih ediyorum.",
+ "Okul ve gençlik düzeyinde teknoloji üretimine katkı vermekle de ilgileniyorum; GençTek temsilciliği bunun bir parçası."
+];
+var PROJECTS=[
+ {slug:"nodis",title:"NODIS",cat:"Erişilebilir teknoloji",status:"Araştırılıyor",featured:true,
+  summary:"Göz ve baş hareketleriyle bilgisayar ve ev kontrol sistemlerini kullanmayı hedefleyen erişilebilirlik projesi.",
+  goal:"Alternatif etkileşim yöntemleriyle bilgisayar veya ev kontrol sistemlerinin kullanılabilmesini sağlamak.",
+  problem:"Klavye, fare ya da dokunmatik ekranı kullanamayan kişiler için erişim seçeneklerini artırmak.",
+  tech:["Python","Bilgisayarlı görü","Kamera tabanlı takip"],
+  state:"Geliştirilebilir bir prototip ve araştırma süreci. Henüz doğrulanmamış özellikler tamamlanmış sayılmaz.",links:[]},
+ {slug:"airguard",title:"AİRGUARD",cat:"Donanım ve elektronik",status:"Geliştiriliyor",featured:true,
+  summary:"Arduino, CO₂ sensörü, fan ve uyarı sistemiyle iç ortam hava kalitesini izlemeyi amaçlayan proje.",
+  goal:"Sensör verisini okumak, eşik değerlerine göre tepki vermek ve kullanıcıyı bilgilendirmek.",
+  problem:"Kapalı ortamlarda havalandırma ihtiyacını ölçülebilir hâle getirmek.",
+  tech:["Arduino","CO₂ sensörü","Fan","Uyarı sistemi"],
+  state:"Öğrenme ve prototip projesi. Sağlık veya güvenlik açısından doğrulanmış bir cihaz değildir.",links:[]},
+ {slug:"muhur",title:"Mühür",cat:"Oyun geliştirme",status:"Fikir",featured:true,
+  summary:"Unreal Engine 5 ile geliştirmeyi hedeflediğim, atmosfer ve keşfe dayalı birinci şahıs korku oyunu.",
+  goal:"Oyuncunun dünyayı keşfetmesini, olayları anlamasını ve mekaniklerle etkileşim kurmasını sağlayan bir deneyim tasarlamak.",
+  problem:"Yalnızca korkutan değil, oyuncuyu düşündüren bir yapı kurmak.",
+  tech:["Unreal Engine 5","Blueprint"],
+  state:"Tasarım ve hikâye geliştirme aşamasında. Geliştirme günlüğü burada yayımlanacak.",links:[]},
+ {slug:"mola",title:"MOLA",cat:"Oyun geliştirme",status:"Fikir",featured:false,
+  summary:"Oyuncunun gözlemlerini kaydedip sonraki gecelerde kullanmasına dayanan gerilim ve hayatta kalma konsepti.",
+  goal:"Özgün bir mekaniği tek kişilik bir prototipte denemek.",problem:"",tech:["Oyun tasarımı"],
+  state:"Konsept aşamasında.",links:[]},
+ {slug:"bahanator",title:"BAHANATOR",cat:"Ürün fikirleri",status:"Fikir",featured:false,
+  summary:"Sorunları somut adımlara çeviren ve ilerlemeyi takip edilebilir kılan yapay zekâ destekli planlama ürünü fikri.",
+  goal:"Genel tavsiye yerine uygulanabilir eylemler ve takip edilebilir bir süreç sunmak.",problem:"",tech:["Yapay zekâ","SaaS araştırması"],
+  state:"Ürün geliştirme ve pazar araştırması kapsamında bir fikir. Ticari ürün değildir.",links:[]}
+];
+/* Yazılar taslaktır; kendi yazınızla değiştirin. block: {h:başlık} veya {p:paragraf} */
+var POSTS=[
+ {slug:"bu-sitenin-amaci",title:"Bu sitenin amacı",cat:"Proje geliştirme günlükleri",date:"2026-10-18",tags:["günlük","plan"],draft:true,
+  body:[{p:"Bu site, projelerimi ve öğrenme sürecimi tek yerde toplamak için var. Burada tamamlanmış işlerin yanında yarım kalanları ve hataları da paylaşmayı planlıyorum."},
+        {h:"Neleri yayımlayacağım"},{p:"Proje günlükleri, kısa öğrenme notları ve ürün fikirleri üzerine düşünceler."},
+        {h:"Nasıl ilerleyeceğim"},{p:"Her projenin gerçek durumunu belirteceğim. Bitmemiş bir şeyi bitmiş gibi göstermeyeceğim."}]},
+ {slug:"hava-kalitesi-plani",title:"Hava kalitesi izleme için bir plan",cat:"Donanım ve elektronik",date:"2026-10-10",tags:["arduino","sensör"],draft:true,
+  body:[{p:"AİRGUARD için sensörden okuma, eşik değerine göre karar verme ve uyarı verme adımlarını ayrı ayrı ele almayı düşünüyorum."},
+        {h:"Aşamalar"},{p:"Önce sensör verisini güvenilir okumak, sonra eşik mantığını kurmak, en sonda fan ve uyarıyı bağlamak daha sağlıklı görünüyor."},
+        {h:"Açık sorular"},{p:"Sensör kalibrasyonu ve ölçümün doğruluğu bu yazıda cevaplanmamış sorular olarak duruyor."}]},
+ {slug:"tek-kisilik-oyun-prototipi",title:"Tek kişilik oyun prototipi için yol haritası",cat:"Oyun geliştirme",date:"2026-10-02",tags:["unreal","prototip"],draft:true,
+  body:[{p:"Bir oyun fikrini önce küçük bir prototipe indirgemek, projenin yönünü anlamanın en ucuz yolu gibi duruyor."},
+        {h:"Önce mekanik"},{p:"Atmosfer ve hikâye değerli, ancak ilk hedef temel mekaniğin eğlenceli ya da anlamlı olup olmadığını görmek."},
+        {h:"Sonra genişletmek"},{p:"Prototip çalışırsa hikâyeyi, seslendirmeyi ve görsel işçiliği katmanlar hâlinde eklemek."}]}
+];
+var CATS=["Yapay zekâ ve LLM","Yazılım öğrenme notları","Proje geliştirme günlükleri","Oyun geliştirme","Donanım ve elektronik","Teknoloji ve girişimcilik"];
+var NOW=[
+ "Python ile bilgisayarlı görü temellerini öğreniyorum.",
+ "NODIS için erişilebilir etkileşim yöntemlerini araştırıyorum.",
+ "AİRGUARD donanım bağlantılarını planlıyorum.",
+ "Mühür için oyun tasarımı ve Blueprint sistemleri üzerinde çalışıyorum.",
+ "Yakında: ilk gerçek geliştirme günlüğünü yayımlamak."
+];
+var APPROACH=[["Anlıyorum","Bir sistemi kullanmadan önce nasıl çalıştığını öğrenmeye çalışıyorum."],["Prototipliyorum","Fikirleri küçük ve denenebilir parçalara bölüp çalışan bir sürüme ulaşmayı hedefliyorum."],["Belgeliyorum","Hataları, kararları ve öğrendiklerimi yazarak arşivliyorum."]];
+var SKILLS=[["Yazılım",["Python","HTML","CSS","JavaScript"]],["Oyun ve 3D",["Unreal Engine 5","Blueprint","Unity","Blender"]],["Donanım",["Arduino","Sensörler"]],["Yapay zekâ",["LLM’ler","Bilgisayarlı görü"]]];
+function skills(){var d=h("div",{class:"facts"});SKILLS.forEach(function(s){d.appendChild(h("section",{},h("h3",{},s[0]),tags(s[1])))});return d}
+function words(t){var e=h("h1",{class:"split"});t.split(" ").forEach(function(w,i){e.appendChild(h("span",{class:"w",style:"animation-delay:"+(0.15+i*0.09)+"s"},w));e.appendChild(document.createTextNode(" "))});return e}
+function stat(n,l){return h("div",{class:"stat"},h("strong",{"data-count":String(n)},"0"),h("span",{},l))}
+function startNet(){
+  var c=document.getElementById("net");if(!c||reduce||!c.getContext)return;
+  var x=c.getContext("2d"),W=0,H=0,P=[];
+  function size(){var r=c.getBoundingClientRect(),d=Math.min(window.devicePixelRatio||1,2);W=r.width;H=r.height;c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0)}
+  size();
+  if(window.ResizeObserver)new ResizeObserver(size).observe(c);
+  for(var i=0,n=Math.round(Math.min(48,W/20));i<n;i++)P.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4});
+  function frame(){
+    if(!document.body.contains(c))return;
+    var r=c.getBoundingClientRect(),mx=mouse.x-r.left,my=mouse.y-r.top;
+    x.clearRect(0,0,W,H);
+    var col=getComputedStyle(document.documentElement).getPropertyValue("--cyan").trim()||"#1F3A32";
+    x.fillStyle=col;x.strokeStyle=col;
+    for(var i=0;i<P.length;i++){
+      var p=P[i];p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+      var dx=p.x-mx,dy=p.y-my,d=Math.sqrt(dx*dx+dy*dy);
+      if(d>0&&d<130){p.x+=dx/d*1.4;p.y+=dy/d*1.4}
+      x.globalAlpha=.75;x.beginPath();x.arc(p.x,p.y,2.2,0,6.283);x.fill();
+      for(var j=i+1;j<P.length;j++){var q=P[j],ex=p.x-q.x,ey=p.y-q.y,e=ex*ex+ey*ey;
+        if(e<13000){x.globalAlpha=(1-e/13000)*.4;x.beginPath();x.moveTo(p.x,p.y);x.lineTo(q.x,q.y);x.stroke()}}
+    }
+    requestAnimationFrame(frame)
+  }
+  frame();
+}
+function lab(t,i){return h("label",{},t,i)}
+function contactPage(){
+  var C=CONFIG,rows=h("ul",{class:"list"});
+  function row(l,a){if(a)rows.appendChild(h("li",{},l+": ",a))}
+  row("E-posta",h("a",{href:"mailto:"+C.email},C.email));
+  C.social.forEach(function(s){row(s.label,ext(s.label==="Instagram"?"@muhammed.ege.33":s.label==="GitHub"?"github.com/muhammedege":s.url,s.url))});
+  var nm=h("input",{type:"text",maxlength:"80",autocomplete:"name"}),sb=h("input",{type:"text",maxlength:"120"}),bd=h("textarea",{maxlength:"1500"}),
+  note=h("p",{class:"meta",role:"status"},"Mesajınız hiçbir sunucuya kaydedilmez; e-posta uygulamanızda hazır olarak açılır."),
+  mail=h("a",{class:"btn",href:"#",target:"_blank",rel:"noopener noreferrer"},"E-posta ile gönder");
+  function upd(){
+    var n=nm.value.trim(),s=sb.value.trim(),b=bd.value.trim();
+    mail.href="mailto:"+C.email+"?subject="+encodeURIComponent(s||"Web sitenizden mesaj")+"&body="+encodeURIComponent(b+(n?"\n\n"+n:""));
+    
+  }
+  function guard(e){if(!nm.value.trim()||!bd.value.trim()){e.preventDefault();note.textContent="Lütfen adınızı ve mesajınızı yazın."}}
+  [nm,sb,bd].forEach(function(i){i.addEventListener("input",upd)});
+  mail.addEventListener("click",guard);upd();
+  return [h("div",{class:"page"},h("h1",{},"İletişim"),h("p",{class:"lead"},"Proje, iş birliği ya da sorularınız için bana aşağıdaki yollardan ulaşabilirsiniz."),
+    h("div",{class:"contact"},h("div",{},h("h2",{},"Doğrudan ulaşın"),rows),
+    h("div",{},h("h2",{},"Mesaj gönderin"),h("div",{class:"msg"},lab("Adınız",nm),lab("Konu",sb),lab("Mesajınız",bd),h("div",{},mail),note))))];
+}
+/* ===== Kod ===== */
+var view=document.getElementById("view"),nav=document.getElementById("nav"),bar=document.getElementById("bar");
+function safe(u){try{var x=new URL(u);return(x.protocol==="https:"||x.protocol==="http:")?x.href:""}catch(e){return ""}}
+function h(tag,props){
+  var n=document.createElement(tag);props=props||{};
+  for(var k in props){if(k==="class")n.className=props[k];else n.setAttribute(k,props[k]);}
+  for(var i=2;i<arguments.length;i++){var c=arguments[i];if(c==null)continue;n.appendChild(typeof c==="string"?document.createTextNode(c):c);}
+  return n;
+}
+function ext(label,url){var u=safe(url);return u?h("a",{href:u,target:"_blank",rel:"noopener noreferrer"},label):null}
+function fdate(d){return new Date(d).toLocaleDateString("tr-TR",{year:"numeric",month:"long",day:"numeric"})}
+function mins(p){var w=0;p.body.forEach(function(b){w+=((b.p||b.h)+"").split(/\s+/).length});return Math.max(1,Math.round(w/200))}
+function find(a,s){for(var i=0;i<a.length;i++)if(a[i].slug===s)return i;return -1}
+function tags(a){var d=h("div",{class:"tags"});a.forEach(function(t){d.appendChild(h("span",{class:"tag"},t))});return d}
+function cover(seed){
+  var s=document.createElementNS("http://www.w3.org/2000/svg","svg");
+  s.setAttribute("viewBox","0 0 200 84");s.setAttribute("class","cover");s.setAttribute("aria-hidden","true");
+  var x=20+(seed%5)*6,out="";
+  for(var i=0;i<5;i++){var cx=x+i*36,cy=20+((i*seed+i*13)%44);out+='<circle cx="'+cx+'" cy="'+cy+'" r="4" fill="var(--cyan)"/>';if(i)out+='<line x1="'+(cx-36)+'" y1="'+(20+(((i-1)*seed+(i-1)*13)%44))+'" x2="'+cx+'" y2="'+cy+'" stroke="var(--blue)" stroke-width="1.5"/>'}
+  s.innerHTML=out;return s;
+}
+function hero(){
+  var s=document.createElementNS("http://www.w3.org/2000/svg","svg");
+  s.setAttribute("viewBox","0 0 320 260");s.setAttribute("role","img");s.setAttribute("aria-label","Düğümlerin birbirine bağlandığı sistem şeması");
+  s.innerHTML='<g stroke="var(--line)" stroke-width="1"><path d="M0 65H320M0 130H320M0 195H320M80 0V260M160 0V260M240 0V260"/></g><g class="flow" stroke="var(--blue)" stroke-width="2" fill="none"><path d="M40 195L120 130L200 150L280 65"/><path d="M120 130L160 65"/></g><g class="nodes" fill="var(--bg)" stroke="var(--cyan)" stroke-width="3"><circle cx="40" cy="195" r="9"/><circle cx="120" cy="130" r="9"/><circle cx="200" cy="150" r="9"/><circle cx="280" cy="65" r="9"/><circle cx="160" cy="65" r="9"/></g>';
+  return s;
+}
+function projCard(p,i){
+  return h("li",{},h("a",{class:"card",href:"#/proje/"+p.slug},cover(i*7+3),h("span",{class:"pill"},p.status),h("h3",{},p.title),h("p",{},p.summary),tags([p.cat])));
+}
+function postCard(p){
+  return h("li",{},h("a",{class:"card",href:"#/yazi/"+p.slug},h("span",{class:"meta"},fdate(p.date)+" · "+mins(p)+" dk okuma"),h("h3",{},p.title),h("p",{},p.cat+(p.draft?" (taslak)":""))));
+}
+function sect(title,lead,child,more){
+  var s=h("section",{class:"blk"},h("h2",{},title));
+  if(lead)s.appendChild(h("p",{class:"lead"},lead));
+  s.appendChild(child);
+  if(more)s.appendChild(h("p",{},h("a",{href:more[0]},more[1])));
+  return s;
+}
+function grid(items,fn){var u=h("ul",{class:"grid"});items.forEach(function(x,i){u.appendChild(fn(x,i))});return u}
+
+var views={
+ home:function(){
+  var left=h("div",{},h("p",{class:"who"},CONFIG.name+" · Bilişim ve yazılım öğrencisi"),words(CONFIG.tagline),h("p",{},CONFIG.intro),h("p",{class:"rot"},"Şu sıralar ilgilendiğim konu: ",h("span",{id:"rot"},TOPICS[0])),
+    h("a",{class:"btn",href:"#/projeler"},"Projelerimi keşfet"),h("a",{class:"btn alt",href:"#/blog"},"Geliştirme günlüğünü oku"));
+  var f=PROJECTS.filter(function(p){return p.featured});
+  return [h("div",{class:"hero"},h("canvas",{id:"net","aria-hidden":"true"}),left,hero()),
+    sect("Şu ana kadar","",h("div",{class:"stats"},stat(PROJECTS.length,"proje ve fikir"),stat(POSTS.length,"taslak yazı"),stat(TOPICS.length,"ilgi alanı"),stat(SKILLS.length,"teknoloji grubu"))),
+    sect("Öne çıkan projeler","Her projenin durumu gerçek aşamasını gösterir.",grid(f,projCard),["#/projeler","Tüm projeler"]),
+    sect("Son yazılar","",grid(POSTS.slice(0,2),postCard),["#/blog","Tüm yazılar"]),
+    sect("Çalışma yaklaşımım","Bir fikri ürüne dönüştürürken izlediğim üç adım.",grid(APPROACH,function(a){return h("li",{},h("div",{class:"card"},h("h3",{},a[0]),h("p",{},a[1])))})),
+    sect("Üzerinde çalıştığım konular","",tags(TOPICS)),
+    sect("Kısaca","",h("p",{class:"lead"},ABOUT[0]),["#/hakkimda","Devamı"]),
+    sect("Bana ulaşın","Proje, iş birliği ya da sorularınız için e-posta veya Instagram üzerinden yazabilirsiniz.",h("a",{class:"btn",href:"#/iletisim"},"İletişim sayfası"))];
+ },
+ about:function(){
+  var d=h("div",{class:"article"});ABOUT.forEach(function(t){d.appendChild(h("p",{},t))});
+  return [h("div",{class:"page"},h("h1",{},"Hakkımda"),h("div",{style:"height:20px"}),d,h("h2",{style:"margin-top:32px"},"İlgi alanlarım"),tags(TOPICS),h("h2",{style:"margin-top:32px"},"Kullandığım teknolojiler"),h("p",{class:"lead"},"Hepsinde öğrenmeye devam ediyorum."),skills())];
+ },
+ projects:function(){
+  var cur="Tümü",cats=["Tümü","Yapay zekâ","Yazılım","Oyun geliştirme","Donanım ve elektronik","Erişilebilir teknoloji","Ürün fikirleri"];
+  var box=h("div"),f=h("div",{class:"filters",role:"group","aria-label":"Kategori"});
+  function draw(){box.textContent="";var l=PROJECTS.filter(function(p){return cur==="Tümü"||p.cat===cur});
+    box.appendChild(l.length?grid(l,projCard):h("p",{class:"lead"},"Bu kategoride henüz proje yok."))}
+  cats.forEach(function(c){var b=h("button",{type:"button","aria-pressed":c===cur?"true":"false"},c);
+    b.addEventListener("click",function(){cur=c;Array.prototype.forEach.call(f.children,function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});draw()});f.appendChild(b)});
+  draw();
+  return [h("div",{class:"page"},h("h1",{},"Projeler"),h("p",{class:"lead"},"Fikirden prototipe uzanan çalışmalarım."),f,box)];
+ },
+ project:function(slug){
+  var i=find(PROJECTS,slug);if(i<0)return views.nf();var p=PROJECTS[i];
+  var d=h("div",{class:"facts"});
+  function add(t,v){if(v&&v.length)d.appendChild(h("section",{},h("h2",{},t),typeof v==="string"?h("p",{},v):tags(v)))}
+  add("Amaç",p.goal);add("Çözdüğü problem",p.problem);add("Teknolojiler",p.tech);add("Mevcut durum",p.state);
+  var ls=h("div",{class:"tags"});p.links.forEach(function(l){var a=ext(l.label,l.url);if(a)ls.appendChild(a)});
+  if(ls.children.length)d.appendChild(h("section",{},h("h2",{},"Bağlantılar"),ls));
+  return [h("div",{class:"page"},h("p",{},h("a",{href:"#/projeler"},"Tüm projeler")),h("span",{class:"pill"},p.status),h("div",{style:"height:10px"}),h("h1",{},p.title),h("p",{class:"lead",style:"margin-top:14px"},p.summary),d)];
+ },
+ blog:function(){
+  var q="",cur="Tümü",box=h("div"),f=h("div",{class:"filters",role:"group","aria-label":"Kategori"}),
+  inp=h("input",{type:"search","aria-label":"Yazılarda ara",placeholder:"Yazılarda ara",maxlength:"80"});
+  function draw(){box.textContent="";var l=POSTS.filter(function(p){
+    var t=(p.title+" "+p.tags.join(" ")+" "+p.cat).toLowerCase();return(cur==="Tümü"||p.cat===cur)&&t.indexOf(q)>-1});
+    box.appendChild(l.length?grid(l,postCard):h("p",{class:"lead"},"Eşleşen yazı bulunamadı."))}
+  ["Tümü"].concat(CATS).forEach(function(c){var b=h("button",{type:"button","aria-pressed":c===cur?"true":"false"},c);
+    b.addEventListener("click",function(){cur=c;Array.prototype.forEach.call(f.children,function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});draw()});f.appendChild(b)});
+  inp.addEventListener("input",function(){q=inp.value.toLowerCase().trim();draw()});draw();
+  return [h("div",{class:"page"},h("h1",{},"Geliştirme günlüğü"),h("p",{class:"lead"},"Öğrenme notları, proje günlükleri ve düşünceler."),inp,f,box)];
+ },
+ post:function(slug){
+  var i=find(POSTS,slug);if(i<0)return views.nf();var p=POSTS[i];
+  var art=h("div",{class:"article"}),toc=h("ul"),n=0;
+  p.body.forEach(function(b){
+    if(b.h){var id="b"+(n++);art.appendChild(h("h2",{id:id},b.h));toc.appendChild(h("li",{},h("a",{href:"#/yazi/"+slug,"data-to":id},b.h)))}
+    else art.appendChild(h("p",{},b.p))});
+  var rel=POSTS.filter(function(x){return x!==p&&x.cat===p.cat}),out=[h("div",{class:"page"},
+    h("p",{},h("a",{href:"#/blog"},"Tüm yazılar")),h("h1",{},p.title),
+    h("p",{class:"meta"},fdate(p.date)+" · "+mins(p)+" dk okuma · "+p.cat),tags(p.tags),
+    p.draft?h("p",{class:"draft"},"Taslak örnek yazı: içerik yayımlanmadan önce düzenlenmelidir."):null,
+    toc.children.length?h("nav",{class:"toc","aria-label":"İçindekiler"},h("strong",{},"İçindekiler"),toc):null,art)];
+  var pn=h("div",{class:"pn"});
+  if(POSTS[i-1])pn.appendChild(h("a",{href:"#/yazi/"+POSTS[i-1].slug},"Önceki: "+POSTS[i-1].title));
+  if(POSTS[i+1])pn.appendChild(h("a",{href:"#/yazi/"+POSTS[i+1].slug},"Sonraki: "+POSTS[i+1].title));
+  out[0].appendChild(pn);
+  if(rel.length)out[0].appendChild(sect("İlgili yazılar","",grid(rel,postCard)));
+  toc.addEventListener("click",function(e){var t=e.target.getAttribute&&e.target.getAttribute("data-to");if(t){e.preventDefault();document.getElementById(t).scrollIntoView()}});
+  return out;
+ },
+ now:function(){
+  var u=h("ul",{class:"list"});NOW.forEach(function(t){u.appendChild(h("li",{},t))});
+  return [h("div",{class:"page"},h("h1",{},"Şu sıralar"),h("p",{class:"lead"},"Neler öğrendiğim ve üzerinde çalıştığım konular."),u)];
+ },
+ contact:function(){return contactPage()},
+ contactOld:function(){
+  var u=h("ul",{class:"list"});
+  if(CONFIG.email&&/^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/.test(CONFIG.email))u.appendChild(h("li",{},"E-posta: ",h("a",{href:"mailto:"+CONFIG.email},CONFIG.email)));
+  CONFIG.social.forEach(function(s){var a=ext(s.url,s.url);if(a)u.appendChild(h("li",{},s.label+": ",a))});
+  return [h("div",{class:"page"},h("h1",{},"İletişim"),
+    u.children.length?u:h("p",{class:"lead"},"İletişim bağlantıları yakında eklenecek. Bu alan, dosyanın başındaki CONFIG bölümünden doldurulur."),
+    h("p",{class:"meta"},"Sunucu tarafı altyapı olmadığı için bu sürümde iletişim formu yoktur."))];
+ },
+ nf:function(){return [h("div",{class:"page"},h("h1",{},"Sayfa bulunamadı"),h("p",{},h("a",{href:"#/"},"Ana sayfaya dön")))]}
+};
+var MENU=[["#/projeler","Projeler","projeler"],["#/blog","Blog","blog"],["#/simdi","Şu sıralar","simdi"],["#/hakkimda","Hakkımda","hakkimda"],["#/iletisim","İletişim","iletisim"]];
+var TITLES={projeler:"Projeler",blog:"Geliştirme günlüğü",simdi:"Şu sıralar",hakkimda:"Hakkımda",iletisim:"İletişim"};
+function route(){
+  var p=location.hash.replace(/^#\/?/,"").split("/"),k=p[0]||"",out;
+  if(k==="")out=views.home();else if(k==="hakkimda")out=views.about();else if(k==="projeler")out=views.projects();
+  else if(k==="proje")out=views.project(p[1]);else if(k==="blog")out=views.blog();else if(k==="yazi")out=views.post(p[1]);
+  else if(k==="simdi")out=views.now();else if(k==="iletisim")out=views.contact();else out=views.nf();
+  view.textContent="";out.forEach(function(n){view.appendChild(n)});
+  nav.textContent="";MENU.forEach(function(m){var a=h("a",{href:m[0]},m[1]);
+    if(k===m[2]||(k==="proje"&&m[2]==="projeler")||(k==="yazi"&&m[2]==="blog"))a.setAttribute("aria-current","page");nav.appendChild(a)});
+  var t=document.querySelector("h1");document.title=(TITLES[k]||(t&&k!==""?t.textContent:"")||CONFIG.name)+" | "+CONFIG.name;
+  view.classList.remove("enter");void view.offsetWidth;view.classList.add("enter");
+  window.scrollTo(0,0);bar.style.width="0";
+  if(io)io.disconnect();clearInterval(tm);
+  if("IntersectionObserver" in window){
+    io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.1});
+    view.querySelectorAll("section.blk,.grid>li,.list>li").forEach(function(n,i){n.classList.add("rv");if(n.tagName==="LI")n.style.transitionDelay=(i%3)*80+"ms";io.observe(n)});
+  }
+  view.querySelectorAll("[data-count]").forEach(function(el){
+    var n=+el.getAttribute("data-count");
+    if(reduce||!("IntersectionObserver" in window)){el.textContent=n;return}
+    var o=new IntersectionObserver(function(es){if(!es[0].isIntersecting)return;o.disconnect();var t0=performance.now();
+      (function s(t){var k=Math.min(1,(t-t0)/1400);el.textContent=Math.round(n*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(s)})(t0)});
+    o.observe(el)});
+  startNet();
+  var r=document.getElementById("rot");
+  if(r&&!reduce){var ti=0;tm=setInterval(function(){r.style.opacity="0";setTimeout(function(){ti=(ti+1)%TOPICS.length;r.textContent=TOPICS[ti];r.style.opacity="1"},300)},2800)}
+}
+var io,tm,reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+var topb=document.getElementById("top");
+window.addEventListener("scroll",function(){topb.classList.toggle("show",window.scrollY>500);document.querySelector("header.site").classList.toggle("sc",window.scrollY>10)},{passive:true});
+topb.addEventListener("click",function(){window.scrollTo({top:0,behavior:reduce?"auto":"smooth"})});
+var mouse={x:-999,y:-999};
+window.addEventListener("pointermove",function(e){mouse.x=e.clientX;mouse.y=e.clientY},{passive:true});
+view.addEventListener("pointermove",function(e){
+  if(!e.target.closest)return;
+  var c=e.target.closest(".card"),b=e.target.closest(".btn");
+  if(c){var r=c.getBoundingClientRect(),px=(e.clientX-r.left)/r.width,py=(e.clientY-r.top)/r.height;
+    c.style.setProperty("--mx",px*100+"%");c.style.setProperty("--my",py*100+"%");
+    if(!reduce)c.style.transform="perspective(800px) rotateX("+((0.5-py)*7)+"deg) rotateY("+((px-0.5)*9)+"deg) translateY(-4px)"}
+  if(b&&!reduce){var q=b.getBoundingClientRect();b.style.transform="translate("+((e.clientX-q.left-q.width/2)*0.15)+"px,"+((e.clientY-q.top-q.height/2)*0.25)+"px)"}
+});
+view.addEventListener("pointerout",function(e){
+  if(!e.target.closest)return;
+  var el=e.target.closest(".card,.btn");
+  if(el&&!el.contains(e.relatedTarget))el.style.transform=""
+});
+window.addEventListener("hashchange",route);
+window.addEventListener("scroll",function(){
+  if(!/^#\/yazi\//.test(location.hash)){bar.style.width="0";return}
+  var d=document.documentElement,m=d.scrollHeight-d.clientHeight;bar.style.width=(m>0?Math.min(100,d.scrollTop/m*100):0)+"%";
+},{passive:true});
+document.getElementById("brand").textContent=CONFIG.name;
+document.getElementById("foot").textContent="© "+new Date().getFullYear()+" "+CONFIG.name;
+var root=document.documentElement;
+
+document.getElementById("theme").addEventListener("click",function(){
+  var cur=root.getAttribute("data-theme")||"dark",nx=cur==="dark"?"light":"dark";
+  root.setAttribute("data-theme",nx);
+});
+route();
+})();
+</script>
+</body>
+</html>
